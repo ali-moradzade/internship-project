@@ -14,5 +14,20 @@ module.exports = function (app) {
             res.send('Passwords do not match');
         }
     });
+
+    app.get('/user/login', (req, res) => {
+        res.sendFile(__dirname + '/resources/user-login.html');
+    });
+
+    app.post('/user/login', (req, res) => {
+        const username = req.body.username;
+        const password = req.body.password;
+
+        if (username === 'ali' && password === 'ali') {
+            res.send('User logged in');
+        } else {
+            res.send('User not found');
+        }
+    });
 }
 
