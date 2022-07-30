@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const date = require(__dirname + '/date.js');
 
 const userHandler = require(__dirname + '/routes/user/user');
+const adminHandler = require(__dirname + '/routes/admin/admin');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.post('/', (req, res) => {
 });
 
 userHandler(app);
+adminHandler(app);
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');

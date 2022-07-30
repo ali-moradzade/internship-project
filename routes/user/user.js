@@ -8,7 +8,6 @@ module.exports = function (app) {
     });
 
     app.post('/user/sign-up', (req, res) => {
-        console.log(req.body);
         if (req.body.password === req.body.confirm) {
             res.send('User created');
         } else {
