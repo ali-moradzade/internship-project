@@ -1,32 +1,28 @@
-module.exports = function (app) {
-    app.get('/admin', (req, res) => {
-        res.sendFile(__dirname + '/resources/admin-home.html');
-    })
+const md5 = require('md5');
 
-    app.get('/admin/sign-up', (req, res) => {
-        res.sendFile(__dirname + '/resources/admin-sign-up.html');
-    });
-
-    app.post('/admin/sign-up', (req, res) => {
-        if (req.body.password === req.body.confirm) {
-            res.send('Admin created');
-        } else {
-            res.send('Passwords do not match');
-        }
-    });
-
+module.exports = function (app, Admin) {
     app.get('/admin/login', (req, res) => {
-        res.sendFile(__dirname + '/resources/admin-login.html');
+        res.render('admin-login');
     });
 
     app.post('/admin/login', (req, res) => {
-        let message = `
-            <h1>Admin loggend in!</h1>
-            <p>username: ${req.body.username}</p>
-            <p>password: ${req.body.password}</p>
-        `;
+        const username = req.body.username;
+        const password = md5(req.body.password);
 
-        res.send(message);
+        Admin.findOne({username: username}, (err, foundAdmin) => {
+            if (err) {
+                console.log(err);
+                res.send("Sorry, something went wrong!");
+            } else {
+                if (foundAdmin) {
+                    if (foundAdmin.password === password) {
+                        res.render('secrets');
+                    }
+                } else {
+                    res.send("Admin not found!");
+                }
+            }
+        });
     });
 }
 

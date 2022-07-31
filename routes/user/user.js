@@ -1,33 +1,30 @@
-module.exports = function (app) {
-    app.get('/user', (req, res) => {
-        res.sendFile(__dirname + '/resources/user-home.html');
-    })
+const md5 = require('md5');
 
-    app.get('/user/sign-up', (req, res) => {
-        res.sendFile(__dirname + '/resources/user-sign-up.html');
-    });
-
-    app.post('/user/sign-up', (req, res) => {
-        if (req.body.password === req.body.confirm) {
-            res.send('User created');
-        } else {
-            res.send('Passwords do not match');
-        }
-    });
-
+module.exports = function (app, User) {
     app.get('/user/login', (req, res) => {
-        res.sendFile(__dirname + '/resources/user-login.html');
+        res.render('user-login');
     });
 
     app.post('/user/login', (req, res) => {
         const username = req.body.username;
-        const password = req.body.password;
+        const password = md5(req.body.password);
 
-        if (username === 'ali' && password === 'ali') {
-            res.send('User logged in');
-        } else {
-            res.send('User not found');
-        }
+        User.findOne({email: username}, (err, foundUser) => {
+            if (err) {
+                console.log(err);
+                res.send("Sorry, something went wrong!");
+            } else {
+                if (foundUser) {
+                    if (foundUser.password === password) {
+                        res.render('secrets');
+                    } else {
+                        res.send("Wrong password!");
+                    }
+                } else {
+                    res.send("User not found!");
+                }
+            }
+        });
     });
 }
 
