@@ -53,6 +53,10 @@ app.post('/sign-up', (req, res) => {
     });
 });
 
+app.get('/logout', (req, res) => {
+    res.render('home');
+});
+
 userHandler(app, User);
 adminHandler(app, Admin);
 

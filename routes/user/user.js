@@ -9,13 +9,16 @@ module.exports = function (app, User) {
         const username = req.body.username;
         const password = md5(req.body.password);
 
-        User.findOne({email: username}, (err, foundUser) => {
+        User.findOne({username: username}, (err, foundUser) => {
             if (err) {
                 console.log(err);
                 res.send("Sorry, something went wrong!");
             } else {
                 if (foundUser) {
                     if (foundUser.password === password) {
+                        console.log(username);
+                        console.log(password);
+                        console.log(foundUser)
                         res.render('secrets');
                     } else {
                         res.send("Wrong password!");
