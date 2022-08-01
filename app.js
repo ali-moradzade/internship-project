@@ -7,9 +7,6 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const userHandler = require(__dirname + '/routes/user/user');
-const adminHandler = require(__dirname + '/routes/admin/admin');
-
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -38,34 +35,11 @@ const User = mongoose.model('User', userSchema);
 
 passport.use(User.createStrategy());
 passport.serializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-        done(err, user);
-    })
+    done(null, id);
 })
 passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
         done(err, user);
-    });
-});
-
-const adminSchema = new mongoose.Schema({
-    username: String,
-    password: String
-});
-
-adminSchema.plugin(passportLocalMongoose);
-
-const Admin = mongoose.model('Admin', adminSchema);
-
-passport.use(Admin.createStrategy());
-passport.serializeUser((id, done) => {
-    Admin.findById(id, (err, admin) => {
-        done(err, admin);
-    })
-});
-passport.deserializeUser((id, done) => {
-    Admin.findById(id, (err, admin) => {
-        done(err, admin);
     });
 });
 
@@ -77,7 +51,6 @@ app.get('/sign-up', (req, res) => {
     res.render('sign-up');
 });
 
-// note: we can't sign up the admins, our database admin should do this work!
 app.post('/sign-up', (req, res) => {
     User.register({username: req.body.username}, req.body.password, (err, user) => {
         if (err) {
@@ -94,9 +67,9 @@ app.post('/sign-up', (req, res) => {
 
 app.get('/secrets', (req, res) => {
     if (req.isAuthenticated()) {
-        res.render('secrets');
+        res.render('secrets', {username: req.user.username});
     } else {
-        res.redirect('/user/login');
+        res.redirect('/login');
     }
 });
 
@@ -110,8 +83,26 @@ app.get('/logout', (req, res) => {
     });
 });
 
-userHandler(app, User, passport);
-adminHandler(app, Admin, passport);
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+app.post('/login', (req, res) => {
+    const user = new User({
+        username: req.body.username,
+        password: req.body.password
+    });
+
+    req.login(user, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            passport.authenticate('local')(req, res, () => {
+                res.redirect('/secrets');
+            });
+        }
+    });
+});
 
 app.listen(3000, () => {
     console.log('Server started on port 3000');
