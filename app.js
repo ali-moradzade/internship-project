@@ -25,9 +25,11 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-routes(app);
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect('mongodb://localhost:27017/internship', {useNewUrlParser: true});
+}
 
-mongoose.connect('mongodb://localhost:27017/internship', {useNewUrlParser: true});
+routes(app);
 
 passport.use(User.createStrategy());
 passport.serializeUser((id, done) => {
@@ -37,6 +39,10 @@ passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
         done(err, user);
     });
+});
+
+app.use((err, req, res, next) => {
+    res.status(422).send({error: err._message});
 });
 
 module.exports = app;
