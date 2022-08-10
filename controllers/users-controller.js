@@ -8,6 +8,7 @@ module.exports = {
 
     create(req, res, next) {
         const userProps = req.body;
+        console.log(userProps);
 
         User.create(userProps)
             .then(user => {
@@ -30,7 +31,14 @@ module.exports = {
         const userId = req.params.id;
 
         User.deleteOne({_id: userId})
-            .then(user => res.status(204).send(user))
+            .then(result => {
+                console.log(result);
+                if (result.deletedCount !== 0) {
+                    res.send(`User with id ${userId} deleted`);
+                } else {
+                    res.status(404).send(`User with id ${userId} not found`);
+                }
+            })
             .catch(next);
     },
 }

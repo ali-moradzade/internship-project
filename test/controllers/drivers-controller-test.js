@@ -4,7 +4,7 @@ const app = require('../../app');
 
 const mongoose = require('mongoose');
 const {response} = require("express");
-const User = mongoose.model('user');
+const User = require('../../models/user');
 
 describe('Users controller', () => {
     it('POST to /api/users creates a new user', (done) => {
@@ -48,7 +48,7 @@ describe('Users controller', () => {
     it('DELETE to /api/users/id can delete a user', done => {
         const user = new User({
             username: 'test',
-            password: 'test'
+            password: 'test',
         });
 
         user.save()

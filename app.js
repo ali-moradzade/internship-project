@@ -9,11 +9,16 @@ const passport = require('passport');
 const User = require('./models/user');
 const routes = require('./routes/routes');
 
+if (process.env.NODE_ENV !== 'test') {
+    mongoose.connect('mongodb://localhost:27017/internship', {useNewUrlParser: true});
+}
+
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'));
+app.use(bodyParser.json());
+routes(app);
 
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.use(session({
@@ -24,12 +29,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-if (process.env.NODE_ENV !== 'test') {
-    mongoose.connect('mongodb://localhost:27017/internship', {useNewUrlParser: true});
-}
-
-routes(app);
 
 passport.use(User.createStrategy());
 passport.serializeUser((id, done) => {
