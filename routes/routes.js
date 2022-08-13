@@ -12,6 +12,7 @@ module.exports = (app) => {
 
     app.get('/api', UserController.greeting);
     app.post('/api/users', UserController.create);
+    app.get('/api/users/:id', UserController.find);
     app.put('/api/users/:id', UserController.edit);
     app.delete('/api/users/:id', UserController.delete);
 };

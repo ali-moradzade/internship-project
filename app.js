@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 
-const User = require('./models/user');
+const User = require('./database/models/user');
 const routes = require('./routes/routes');
 
 if (process.env.NODE_ENV !== 'test') {

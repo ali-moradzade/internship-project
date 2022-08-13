@@ -4,7 +4,7 @@ const app = require('../../app');
 
 const mongoose = require('mongoose');
 const {response} = require("express");
-const User = require('../../models/user');
+const User = require('../../database/models/user');
 
 describe('Users controller', () => {
     it('POST to /api/users creates a new user', (done) => {
@@ -20,6 +20,25 @@ describe('Users controller', () => {
                                 done();
                             });
                     });
+            });
+    });
+
+    it('Get from /api/users/:id returns specified user', (done) => {
+        const user = new User({
+            username: 'test',
+            password: 'test'
+        });
+
+        user.save()
+            .then(() => {
+                request(app)
+                    .get(`/api/users/${user._id}`)
+                    .end((err, res) => {
+                            console.log(res.body);
+                            assert(res.body.username === 'test');
+                            done();
+                        }
+                    );
             });
     });
 

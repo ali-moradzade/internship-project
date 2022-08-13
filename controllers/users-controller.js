@@ -1,5 +1,10 @@
-const User = require('../models/user');
+const User = require('../database/models/user');
 const bodyParser = require("body-parser");
+
+const createUser = require('../database/queries/create-user');
+const findUser = require('../database/queries/find-user');
+const updateUser = require('../database/queries/edit-user');
+const deleteUser = require('../database/queries/delete-user');
 
 module.exports = {
     greeting(req, res) {
@@ -10,7 +15,17 @@ module.exports = {
         const userProps = req.body;
         console.log(userProps);
 
-        User.create(userProps)
+        createUser(userProps)
+            .then(user => {
+                res.send(user);
+            })
+            .catch(next);
+    },
+
+    find(req, res, next) {
+        const _id = req.params.id;
+
+        findUser(_id)
             .then(user => {
                 res.send(user);
             })
@@ -21,7 +36,7 @@ module.exports = {
         const userId = req.params.id;
         const userProps = req.body;
 
-        User.updateOne({_id: userId}, userProps)
+        updateUser(userId, userProps)
             .then(() => User.findById(userId))
             .then(user => res.send(user))
             .catch(next);
@@ -30,7 +45,7 @@ module.exports = {
     delete(req, res, next) {
         const userId = req.params.id;
 
-        User.deleteOne({_id: userId})
+        deleteUser(userId)
             .then(result => {
                 console.log(result);
                 if (result.deletedCount !== 0) {
