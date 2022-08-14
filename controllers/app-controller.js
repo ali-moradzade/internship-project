@@ -11,7 +11,13 @@ module.exports = {
     },
 
     signUpPost(req, res) {
-        User.register({username: req.body.username}, req.body.password, (err, user) => {
+        User.register(new User({
+            name: req.body.name,
+            email: req.body.email,
+            age: req.body.age,
+            gender: req.body.age,
+            username: req.body.username
+        }), req.body.password, (err, user) => {
             if (err) {
                 console.log(err);
                 res.redirect('/sign-up');
@@ -26,7 +32,14 @@ module.exports = {
 
     secrets(req, res) {
         if (req.isAuthenticated()) {
-            res.render('secrets', {username: req.user.username});
+            res.render('secrets', {
+                name: req.user.name,
+                email: req.user.email,
+                age: req.user.age,
+                gender: req.user.gender,
+                username: req.user.username
+            });
+            // res.render('secrets', {username: req.user.username});
         } else {
             res.redirect('/login');
         }
