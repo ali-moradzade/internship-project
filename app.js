@@ -15,8 +15,8 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
-app.use(bodyParser.json());
-routes(app);
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -43,5 +43,7 @@ passport.deserializeUser((id, done) => {
 app.use((err, req, res, next) => {
     res.status(422).send({error: err._message});
 });
+
+routes(app);
 
 module.exports = app;
