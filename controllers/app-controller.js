@@ -15,7 +15,7 @@ module.exports = {
             name: req.body.name,
             email: req.body.email,
             age: req.body.age,
-            gender: req.body.age,
+            gender: req.body.gender,
             username: req.body.username
         }), req.body.password, (err, user) => {
             if (err) {
@@ -68,10 +68,12 @@ module.exports = {
         req.login(user, (err) => {
             if (err) {
                 console.log(err);
+                res.send('Login failed');
             } else {
-                passport.authenticate('local')(req, res, () => {
-                    res.redirect('/secrets');
-                });
+                passport.authenticate('local', {
+                    successRedirect: '/secrets',
+                    failureRedirect: '/login' //TODO: should be /login-failed
+                })(req, res);
             }
         });
     },
