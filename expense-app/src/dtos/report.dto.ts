@@ -25,7 +25,7 @@ export class UpdateReportDto {
 }
 
 export class ReportResponseDto {
-    id: number;
+    id: string;
     source: string;
     amount: number;
 
