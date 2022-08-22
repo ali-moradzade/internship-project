@@ -59,7 +59,16 @@ export class ReportService {
         return new ReportResponseDto(data.report[index]);
     }
 
-    // deleteReport(): ReportResponseDto {
-    //
-    // }
+    deleteReport(id: string): ReportResponseDto {
+        const index = data.report.findIndex(report => report.id === id);
+
+        if (index === -1) {
+            return;
+        }
+
+        const record = data.report[index];
+        data.report.splice(index, 1);
+
+        return new ReportResponseDto(record);
+    }
 }
