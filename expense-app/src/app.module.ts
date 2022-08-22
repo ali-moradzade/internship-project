@@ -3,6 +3,7 @@ import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {ReportModule} from './report/report.module';
 import {APP_INTERCEPTOR} from "@nestjs/core";
+import { SummaryModule } from './summary/summary.module';
 
 @Module({
     controllers: [AppController],
@@ -10,7 +11,7 @@ import {APP_INTERCEPTOR} from "@nestjs/core";
         provide: APP_INTERCEPTOR,
         useClass: ClassSerializerInterceptor,
     }],
-    imports: [ReportModule],
+    imports: [ReportModule, SummaryModule],
 })
 
 

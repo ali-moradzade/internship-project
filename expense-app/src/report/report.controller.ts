@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, ParseEnumPipe, ParseUUIDPipe, Post, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpCode, Param, ParseEnumPipe, ParseUUIDPipe, Post, Put} from '@nestjs/common';
 import {ReportService} from "./report.service";
 import {ReportType} from "../data";
 import {CreateReportDto, UpdateReportDto} from "../dtos/report.dto";
@@ -44,6 +44,7 @@ export class ReportController {
         return this.reportService.updateReport(this.getReportType(reportType), id, body);
     }
 
+    @HttpCode(204)
     @Delete('/:id')
     deleteReport(
         @Param('id', new ParseUUIDPipe()) id: string,
