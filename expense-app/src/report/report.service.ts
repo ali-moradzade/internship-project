@@ -8,10 +8,10 @@ interface CreateReport {
     amount: number;
 }
 
-// interface UpdateReport {
-//     source?: string;
-//     amount?: number;
-// }
+interface UpdateReport {
+    source?: string;
+    amount?: number;
+}
 
 @Injectable()
 export class ReportService {
@@ -43,10 +43,22 @@ export class ReportService {
         return new ReportResponseDto(record);
     }
 
-    // updateReport(body: UpdateReport): ReportResponseDto {
-    //
-    // }
-    //
+    updateReport(reportType: ReportType, id: string, body: UpdateReport): ReportResponseDto {
+        const index = data.report.filter(report => report.type === reportType).findIndex(report => report.id === id);
+        if (index === -1) {
+            return;
+        }
+
+        const record = data.report[index];
+        data.report[index] = {
+            ...record,
+            ...body,
+            updated_at: new Date(),
+        }
+
+        return new ReportResponseDto(data.report[index]);
+    }
+
     // deleteReport(): ReportResponseDto {
     //
     // }
