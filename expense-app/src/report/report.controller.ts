@@ -1,20 +1,22 @@
-import {Body, Controller, Delete, Get, Param, ParseEnumPipe, ParseUUIDPipe, Post, Put} from '@nestjs/common';
+import {Body, Controller, Get, Param, ParseEnumPipe, ParseUUIDPipe, Post} from '@nestjs/common';
 import {ReportService} from "./report.service";
 import {ReportType} from "../data";
-import {CreateReportDto, UpdateReportDto} from "../dtos/report.dto";
+import {CreateReportDto} from "../dtos/report.dto";
 
 @Controller('report/:reportType')
 export class ReportController {
     constructor(private readonly reportService: ReportService) {
     }
 
+    private getReportType(reportType: string) {
+        return reportType.toLowerCase() === 'income' ? ReportType.INCOME : ReportType.EXPENSE;
+    }
+
     @Get()
     getAllReports(
         @Param('reportType', new ParseEnumPipe(ReportType)) reportType: string,
     ) {
-        return this.reportService.getAllReports(
-            reportType.toLowerCase() === 'income' ?
-                ReportType.INCOME : ReportType.EXPENSE);
+        return this.reportService.getAllReports(this.getReportType(reportType));
     }
 
     @Get('/:id')
@@ -22,33 +24,30 @@ export class ReportController {
         @Param('reportType', new ParseEnumPipe(ReportType)) reportType: string,
         @Param('id', new ParseUUIDPipe()) id: string,
     ) {
-        return this.reportService.getReportById(
-            reportType.toLowerCase() === 'income' ?
-                ReportType.INCOME : ReportType.EXPENSE,
-            id);
+        return this.reportService.getReportById(this.getReportType(reportType), id);
     }
 
     @Post()
     createReport(
         @Param('reportType', new ParseEnumPipe(ReportType)) reportType: string,
-        @Body() body: CreateReportDto,
+        @Body() {source, amount}: CreateReportDto,
     ) {
-        return this.reportService.createReport();
+        return this.reportService.createReport(this.getReportType(reportType), {source, amount});
     }
 
-    @Put('/:id')
-    updateReport(
-        @Param('reportType', new ParseEnumPipe(ReportType)) reportType: string,
-        @Param('id', new ParseUUIDPipe()) id: string,
-        @Body() body: UpdateReportDto,
-    ) {
-        return this.reportService.updateReport();
-    }
-
-    @Delete('/:id')
-    deleteReport(
-        @Param('id', new ParseUUIDPipe()) id: string,
-    ) {
-        return this.reportService.deleteReport();
-    }
+    // @Put('/:id')
+    // updateReport(
+    //     @Param('reportType', new ParseEnumPipe(ReportType)) reportType: string,
+    //     @Param('id', new ParseUUIDPipe()) id: string,
+    //     @Body() body: UpdateReportDto,
+    // ) {
+    //     return this.reportService.updateReport();
+    // }
+    //
+    // @Delete('/:id')
+    // deleteReport(
+    //     @Param('id', new ParseUUIDPipe()) id: string,
+    // ) {
+    //     return this.reportService.deleteReport();
+    // }
 }
