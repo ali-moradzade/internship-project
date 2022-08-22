@@ -1,5 +1,6 @@
-import {Controller, Delete, Get, Post, Put} from '@nestjs/common';
+import {Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import {ReportService} from "./report.service";
+import {ReportType} from "../data";
 
 @Controller('report/:reportType')
 export class ReportController {
@@ -7,13 +8,23 @@ export class ReportController {
     }
 
     @Get()
-    getAllReports() {
-        return this.reportService.getAllReports();
+    getAllReports(
+        @Param('reportType') reportType: string,
+    ) {
+        return this.reportService.getAllReports(
+            reportType.toLowerCase() === 'income' ?
+                ReportType.INCOME : ReportType.EXPENSE);
     }
 
     @Get('/:id')
-    getReportById() {
-        return this.reportService.getReportById();
+    getReportById(
+        @Param('reportType') reportType: string,
+        @Param('id') id: string,
+    ) {
+        return this.reportService.getReportById(
+            reportType.toLowerCase() === 'income' ?
+                ReportType.INCOME : ReportType.EXPENSE,
+            id);
     }
 
     @Post()

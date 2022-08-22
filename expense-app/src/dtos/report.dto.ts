@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString} from "class-validator";
+import {IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString, IsUUID} from "class-validator";
 import {ReportType} from "../data";
 import {Expose, Exclude} from "class-transformer";
 
@@ -46,5 +46,9 @@ export class ReportResponseDto {
     @Expose({name: 'reportType'})
     reportType() {
         return this.report_type;
+    }
+
+    constructor(partial: Partial<ReportResponseDto>) {
+        Object.assign(this, partial);
     }
 }
