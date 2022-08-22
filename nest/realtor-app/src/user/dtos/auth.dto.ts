@@ -17,3 +17,19 @@ export class SignupDto {
     @MinLength(8)
     password: string;
 }
+
+export class SigninDto {
+    @IsEmail()
+    email: string;
+
+    @IsString()
+    password: string;
+}
+
+export class GenerateProductKeyDto {
+    @IsEmail()
+    email: string;
+
+    @IsEnum(UserType)
+    userType: UserType;
+}
