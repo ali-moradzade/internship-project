@@ -36,7 +36,7 @@ export class AuthService {
             throw new ConflictException();
         }
 
-        const hashedPassword = bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = await this.prismaService.user.create({
             data: {

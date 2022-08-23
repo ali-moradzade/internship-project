@@ -12,9 +12,8 @@ export class AuthController {
     @Post('/signup/:userType')
     async signup(
         @Body() body: SignupDto,
-        @Param('id', new ParseEnumPipe(UserType)) userType: UserType,
+        @Param('userType', new ParseEnumPipe(UserType)) userType: UserType,
     ) {
-        console.log('HELLO BUYER!');
         if (userType !== UserType.BUYER) {
             if (!body.productKey) {
                 throw new UnauthorizedException();
@@ -26,10 +25,7 @@ export class AuthController {
             if (!isValid) {
                 throw new UnauthorizedException();
             }
-        } else {
-            console.log('HELLO BUYER!');
         }
-
         return this.authService.signup(userType, body);
     }
 }
