@@ -1,6 +1,7 @@
-import {Controller, Get, Query} from '@nestjs/common';
+import {Body, Controller, Get, Param, ParseIntPipe, Post, Query} from '@nestjs/common';
 import {HomeService} from "./home.service";
 import {PropertyType} from "@prisma/client";
+import {CreateHomeDto} from "./dtos/home.dto";
 
 @Controller('home')
 export class HomeController {
@@ -26,5 +27,19 @@ export class HomeController {
         };
 
         return this.homeService.getHomes(filters);
+    }
+
+    @Get('/:id')
+    getHomeById(
+        @Param('id', new ParseIntPipe()) id: number,
+    ) {
+        return this.homeService.getHomeById(id);
+    }
+
+    @Post()
+    createHome(
+        @Body() body: CreateHomeDto,
+    ) {
+        return this.homeService.createHome(body);
     }
 }
