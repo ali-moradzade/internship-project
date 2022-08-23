@@ -1,6 +1,6 @@
 import {Body, Controller, Param, ParseEnumPipe, Post, UnauthorizedException} from '@nestjs/common';
 import {AuthService} from "./auth.service";
-import {SignupDto} from "../dtos/auth.dto";
+import {SigninDto, SignupDto} from "../dtos/auth.dto";
 import {UserType} from "@prisma/client";
 import * as bcrypt from 'bcryptjs';
 
@@ -27,5 +27,12 @@ export class AuthController {
             }
         }
         return this.authService.signup(userType, body);
+    }
+
+    @Post('/signin')
+    signin(
+        @Body() body: SigninDto,
+    ) {
+        return this.authService.signin(body);
     }
 }
