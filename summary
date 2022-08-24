@@ -1,0 +1,294 @@
+01-get-started-here:
+    01-how-to-get-help.mp4                                                   : 00:00:51
+    total                                                                    : 00:00:51
+
+=======================================================================================
+02-the-basics-of-nest:
+    01-project-setup.mp4                                                     : 00:04:04
+    02-typescript-configuration.mp4                                          : 00:05:36
+    03-creating-a-controller.mp4                                             : 00:07:03
+    04-starting-up-a-nest-app.mp4                                            : 00:05:50
+    05-file-naming-conventions.mp4                                           : 00:04:35
+    06-routing-decorators.mp4                                                : 00:02:47
+    total                                                                    : 00:29:55
+
+=======================================================================================
+03-generating-projects-with-the-nest-cli:
+    01-app-setup.mp4                                                         : 00:07:42
+    02-using-the-nest-cli-to-generate-files.mp4                              : 00:06:10
+    03-more-on-generating-files.mp4                                          : 00:04:11
+    04-adding-routing-logic.mp4                                              : 00:04:04
+    05-optional-postman-setup.mp4                                            : 00:04:47
+    06-optional-vscode-rest-client-extension.mp4                             : 00:05:11
+    total                                                                    : 00:32:05
+
+=======================================================================================
+04-validating-request-data-with-pipes:
+    01-accessing-request-data-with-decorators.mp4                            : 00:05:38
+    02-using-pipes-for-validation.mp4                                        : 00:03:02
+    03-adding-validation-rules.mp4                                           : 00:07:36
+    04-behind-the-scenes-of-validation.mp4                                   : 00:07:21
+    05-how-type-info-is-preserved.mp4                                        : 00:06:14
+    total                                                                    : 00:29:51
+
+=======================================================================================
+05-nest-architecture-services-and-repositories:
+    01-services-and-repositories.mp4                                         : 00:06:11
+    02-implementing-a-repository.mp4                                         : 00:06:38
+    03-reading-and-writing-to-a-storage-file.mp4                             : 00:04:39
+    04-implementing-a-service.mp4                                            : 00:05:01
+    05-manual-testing-of-the-controller.mp4                                  : 00:07:12
+    06-reporting-errors-with-exceptions.mp4                                  : 00:05:26
+    07-understanding-inversion-of-control.mp4                                : 00:11:17
+    08-introduction-to-dependency-injection.mp4                              : 00:09:25
+    09-refactoring-to-use-dependency-injection.mp4                           : 00:07:35
+    10-few-more-notes-on-di.mp4                                              : 00:05:49
+    total                                                                    : 01:09:13
+
+=======================================================================================
+06-nest-architecture-organizing-code-with-modules:
+    01-project-overview.mp4                                                  : 00:03:06
+    02-generating-a-few-files.mp4                                            : 00:04:42
+    03-setting-up-di-between-modules.mp4                                     : 00:05:57
+    04-more-on-di-between-modules.mp4                                        : 00:04:39
+    05-consuming-multiple-modules.mp4                                        : 00:05:19
+    06-modules-wrapup.mp4                                                    : 00:01:53
+    total                                                                    : 00:25:36
+
+=======================================================================================
+07-big-project-time:
+    01-app-overview.mp4                                                      : 00:02:18
+    02-api-design.mp4                                                        : 00:04:08
+    03-module-design.mp4                                                     : 00:03:02
+    04-generating-modules-controllers-and-services.mp4                       : 00:02:27
+    total                                                                    : 00:11:55
+
+=======================================================================================
+08-persisting-data-with-typeorm:
+    01-persistent-data-with-nest.mp4                                         : 00:02:50
+    02-setting-up-a-database-connection.mp4                                  : 00:07:28
+    03-creating-an-entity-and-repository.mp4                                 : 00:07:13
+    04-viewing-a-db-s-contents.mp4                                           : 00:06:54
+    05-understanding-typeorm-decorators.mp4                                  : 00:07:14
+    06-one-quick-note-on-repositories.mp4                                    : 00:03:53
+    07-a-few-extra-routes.mp4                                                : 00:03:08
+    08-setting-up-body-validation.mp4                                        : 00:07:15
+    09-manual-route-testing.mp4                                              : 00:03:52
+    total                                                                    : 00:49:47
+
+=======================================================================================
+09-creating-and-saving-user-data:
+    01-creating-and-saving-a-user.mp4                                        : 00:08:58
+    02-quick-breather-and-review.mp4                                         : 00:05:53
+    03-more-on-create-vs-save.mp4                                            : 00:07:36
+    04-querying-for-data.mp4                                                 : 00:04:41
+    05-updating-data.mp4                                                     : 00:11:24
+    06-removing-records.mp4                                                  : 00:03:44
+    07-finding-and-filtering-records.mp4                                     : 00:05:50
+    08-removing-records.mp4                                                  : 00:02:51
+    09-updating-records.mp4                                                  : 00:06:06
+    10-a-few-notes-on-exceptions.mp4                                         : 00:06:48
+    total                                                                    : 01:03:51
+
+=======================================================================================
+10-custom-data-serialization:
+    01-excluding-response-properties.mp4                                     : 00:05:50
+    02-solution-to-serialization.mp4                                         : 00:04:37
+    03-how-to-build-interceptors.mp4                                         : 00:12:13
+    04-serialization-in-the-interceptor.mp4                                  : 00:08:20
+    05-customizing-the-interceptor-s-dto.mp4                                 : 00:03:02
+    06-wrapping-the-interceptor-in-a-decorator.mp4                           : 00:03:07
+    07-controller-wide-serialization.mp4                                     : 00:02:48
+    08-a-bit-of-type-safety-around-serialize.mp4                             : 00:03:30
+    09-nestjs-the-complete.mp4                                               : 00:00:25
+    total                                                                    : 00:43:52
+
+=======================================================================================
+11-authentication-from-scratch:
+    01-authentication-overview.mp4                                           : 00:08:21
+    02-reminder-on-service-setup.mp4                                         : 00:04:15
+    03-implementing-signup-functionality.mp4                                 : 00:03:44
+    04-optional-understanding-password-hashing.mp4                           : 00:18:48
+    05-salting-and-hashing-the-password.mp4                                  : 00:08:04
+    06-creating-a-user.mp4                                                   : 00:03:22
+    07-handling-user-sign-in.mp4                                             : 00:08:28
+    08-setting-up-sessions.mp4                                               : 00:06:02
+    09-changing-and-fetching-session-data.mp4                                : 00:05:45
+    10-signing-in-a-user.mp4                                                 : 00:04:47
+    11-getting-the-current-user.mp4                                          : 00:02:01
+    12-signing-out-a-user.mp4                                                : 00:03:46
+    13-two-automation-tools.mp4                                              : 00:01:56
+    14-custom-param-decorators.mp4                                           : 00:05:34
+    15-why-a-decorator-and-interceptor.mp4                                   : 00:06:12
+    16-communicating-from-interceptor-to-decorator.mp4                       : 00:07:07
+    18-connecting-an-interceptor-to-dependency-injection.mp4                 : 00:04:43
+    19-globally-scoped-interceptors.mp4                                      : 00:03:52
+    20-preventing-access-with-authentication-guards.mp4                      : 00:06:46
+    total                                                                    : 01:53:33
+
+=======================================================================================
+12-getting-started-with-unit-testing:
+    01-testing-overview.mp4                                                  : 00:04:42
+    02-testing-setup.mp4                                                     : 00:07:16
+    03-yes-testing-is-confusing.mp4                                          : 00:06:49
+    04-getting-typescript-to-help-with-mocks.mp4                             : 00:06:23
+    06-improving-file-layout.mp4                                             : 00:04:02
+    07-ensuring-password-gets-hashed.mp4                                     : 00:05:56
+    08-changing-mock-implementations.mp4                                     : 00:07:32
+    09-testing-the-signin-flow.mp4                                           : 00:02:02
+    10-checking-password-comparison.mp4                                      : 00:08:37
+    11-more-intelligent-mocks.mp4                                            : 00:07:56
+    12-refactoring-to-use-intelligent-mocks.mp4                              : 00:03:24
+    13-unit-testing-a-controller.mp4                                         : 00:06:48
+    14-more-mock-implementations.mp4                                         : 00:06:00
+    15-not-super-effective-tests.mp4                                         : 00:08:10
+    16-testing-the-signin-method.mp4                                         : 00:06:28
+    total                                                                    : 01:32:05
+
+=======================================================================================
+13-integration-testing:
+    01-getting-started-with-end-to-end-testing.mp4                           : 00:03:31
+    02-creating-an-end-to-end-test.mp4                                       : 00:06:41
+    03-app-setup-issues-in-spec-files.mp4                                    : 00:08:26
+    04-applying-a-globally-scoped-pipe.mp4                                   : 00:05:02
+    05-applying-a-globally-scoped-middleware.mp4                             : 00:04:40
+    06-solving-failures-around-repeat-test-runs.mp4                          : 00:04:46
+    07-creating-separate-test-and-dev-databases.mp4                          : 00:04:44
+    total                                                                    : 00:37:50
+
+=======================================================================================
+14-managing-app-configuration:
+    01-understanding-dotenv.mp4                                              : 00:05:25
+    02-applying-dotenv-for-config.mp4                                        : 00:06:47
+    03-specifying-the-runtime-environment.mp4                                : 00:04:44
+    04-solving-a-sqlite-error.mp4                                            : 00:02:52
+    05-it-works.mp4                                                          : 00:07:31
+    06-a-followup-test.mp4                                                   : 00:05:22
+    total                                                                    : 00:32:41
+
+=======================================================================================
+15-relations-with-typeorm:
+    01-back-to-reports.mp4                                                   : 00:01:00
+    02-adding-properties-to-reports.mp4                                      : 00:02:52
+    03-a-dto-for-report-creation.mp4                                         : 00:03:49
+    04-receiving-report-creation-requests.mp4                                : 00:07:07
+    05-saving-a-report-with-the-reports-service.mp4                          : 00:04:10
+    06-testing-report-creation.mp4                                           : 00:04:07
+    07-building-associations.mp4                                             : 00:03:35
+    08-types-of-associations.mp4                                             : 00:06:39
+    09-the-manytoone-and-manytomany-decorators.mp4                           : 00:05:45
+    11-more-on-decorators.mp4                                                : 00:08:28
+    12-setting-up-the-association.mp4                                        : 00:06:38
+    13-formatting-the-report-response.mp4                                    : 00:03:38
+    14-transforming-properties-with-a-dto.mp4                                : 00:05:04
+    total                                                                    : 01:02:52
+
+=======================================================================================
+16-a-basic-permissions-system:
+    01-adding-in-report-approval.mp4                                         : 00:05:58
+    02-testing-report-approval.mp4                                           : 00:05:48
+    03-authorization-vs-authentication.mp4                                   : 00:04:17
+    04-adding-an-authorization-guard.mp4                                     : 00:04:35
+    05-the-guard-doesn-t-work.mp4                                            : 00:02:18
+    06-middlewares-guards-and-interceptors.mp4                               : 00:03:49
+    07-assigning-currentuser-with-a-middleware.mp4                           : 00:08:15
+    08-fixing-a-type-definition-error.mp4                                    : 00:02:33
+    09-validating-query-string-values.mp4                                    : 00:07:27
+    10-transforming-query-string-data.mp4                                    : 00:03:48
+    11-how-will-we-generate-an-estimate.mp4                                  : 00:03:31
+    total                                                                    : 00:52:19
+
+=======================================================================================
+17-query-builders-with-typeorm:
+    01-creating-a-query-builder.mp4                                          : 00:05:14
+    02-writing-a-query-to-produce-the-estimate.mp4                           : 00:08:32
+    03-testing-the-estimate-logic.mp4                                        : 00:03:45
+    total                                                                    : 00:17:31
+
+=======================================================================================
+18-production-deployment:
+    01-the-path-to-production.mp4                                            : 00:02:08
+    02-providing-the-cookie-key.mp4                                          : 00:03:35
+    03-understanding-the-synchronize-flag.mp4                                : 00:03:43
+    04-the-dangers-of-synchronize.mp4                                        : 00:02:22
+    05-the-theory-behind-migrations.mp4                                      : 00:03:20
+    06-headaches-with-config-management.mp4                                  : 00:04:48
+    07-typeorm-and-nest-config-is-great.mp4                                  : 00:24:04
+    total                                                                    : 00:44:00
+
+=======================================================================================
+19-bonus-appendix-typescript:
+    01-how-to-get-help.mp4                                                   : 00:01:04
+    02-typescript-overview.mp4                                               : 00:06:19
+    03-environment-setup.mp4                                                 : 00:07:59
+    04-a-first-app.mp4                                                       : 00:04:43
+    05-executing-typescript-code.mp4                                         : 00:05:03
+    06-one-quick-change.mp4                                                  : 00:03:35
+    07-catching-errors-with-typescript.mp4                                   : 00:07:22
+    08-catching-more-errors.mp4                                              : 00:05:15
+    09-course-overview.mp4                                                   : 00:03:36
+    10-types.mp4                                                             : 00:05:12
+    11-more-on-types.mp4                                                     : 00:05:53
+    12-examples-of-types.mp4                                                 : 00:04:48
+    13-where-do-we-use-types.mp4                                             : 00:00:49
+    14-type-annotations-and-inference.mp4                                    : 00:02:03
+    15-annotations-with-variables.mp4                                        : 00:04:53
+    16-object-literal-annotations.mp4                                        : 00:06:53
+    17-annotations-around-functions.mp4                                      : 00:05:55
+    18-understanding-inference.mp4                                           : 00:03:51
+    19-the-any-type.mp4                                                      : 00:07:47
+    20-fixing-the-any-type.mp4                                               : 00:01:49
+    21-delayed-initialization.mp4                                            : 00:03:05
+    22-when-inference-doesn-t-work.mp4                                       : 00:04:37
+    23-annotations-around-functions.mp4                                      : 00:04:56
+    24-inference-around-functions.mp4                                        : 00:06:08
+    25-annotations-for-anonymous-functions.mp4                               : 00:01:42
+    26-void-and-never.mp4                                                    : 00:02:49
+    27-destructuring-with-annotations.mp4                                    : 00:03:35
+    28-annotations-around-objects.mp4                                        : 00:07:05
+    29-arrays-in-typescript.mp4                                              : 00:05:05
+    30-why-typed-arrays.mp4                                                  : 00:04:30
+    31-multiple-types-in-arrays.mp4                                          : 00:02:57
+    32-when-to-use-typed-arrays.mp4                                          : 00:00:54
+    33-tuples-in-typescript.mp4                                              : 00:04:04
+    34-tuples-in-action.mp4                                                  : 00:05:28
+    35-why-tuples.mp4                                                        : 00:03:20
+    36-interfaces.mp4                                                        : 00:01:26
+    37-long-type-annotations.mp4                                             : 00:04:42
+    38-fixing-annotations-with-interfaces.mp4                                : 00:04:36
+    39-syntax-around-interfaces.mp4                                          : 00:03:31
+    40-functions-in-interfaces.mp4                                           : 00:04:46
+    41-code-reuse-with-interfaces.mp4                                        : 00:04:15
+    42-general-plan-with-interfaces.mp4                                      : 00:03:12
+    43-classes.mp4                                                           : 00:03:47
+    44-basic-inheritance.mp4                                                 : 00:03:03
+    45-class-method-modifiers.mp4                                            : 00:06:41
+    46-fields-in-classes.mp4                                                 : 00:06:18
+    47-fields-with-inheritance.mp4                                           : 00:04:18
+    48-where-to-use-classes.mp4                                              : 00:01:10
+    49-app-overview.mp4                                                      : 00:02:45
+    50-parcel-in-action.mp4                                                  : 00:04:55
+    51-project-structure.mp4                                                 : 00:03:19
+    52-generating-random-data.mp4                                            : 00:05:29
+    53-type-definition-files.mp4                                             : 00:05:17
+    54-using-type-definition-files.mp4                                       : 00:06:20
+    55-export-statements-in-typescript.mp4                                   : 00:05:06
+    56-defining-a-company.mp4                                                : 00:04:43
+    57-adding-google-maps-support.mp4                                        : 00:07:38
+    58-google-maps-integration-with-typescript.mp4                           : 00:04:06
+    59-exploring-type-definition-files.mp4                                   : 00:12:46
+    60-hiding-functionality.mp4                                              : 00:06:28
+    61-why-use-private-modifiers-here-s-why.mp4                              : 00:08:25
+    62-adding-markers.mp4                                                    : 00:09:18
+    63-duplicate-code.mp4                                                    : 00:02:45
+    64-one-possible-solution.mp4                                             : 00:06:38
+    65-restricting-access-with-interfaces.mp4                                : 00:05:35
+    66-implicit-type-checks.mp4                                              : 00:03:26
+    67-showing-popup-windows.mp4                                             : 00:06:47
+    68-updating-interface-definitions.mp4                                    : 00:07:11
+    69-optional-implements-clauses.mp4                                       : 00:06:06
+    70-app-wrapup.mp4                                                        : 00:08:08
+    total                                                                    : 05:40:00
+
+=======================================================================================
+Total                                                                        : 19:09:47
