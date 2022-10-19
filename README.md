@@ -46,3 +46,86 @@ There is also rest api for the users, they are as follows:
 
 ### Tests
 There is also test for each route, written with the `mocha` test frame work, and using package `request` for sending requests. 
+
+## Expense App
+This app is for managing reports, and also getting a summary of reports. This app is written using nest/typescript, it uses dtos to control the structure of messages recieved and throws away messages with bad format and returns suitable error.
+
+For the report path we have:
+| Method   | URL                                      | Description                                                                   |
+| -------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
+| `GET`    | `/report/:reportType`                    | Gets reports with the specified reportType, that can be `income` or `expense` |
+| `GET`    | `/report/:reportType/:id`                | Gets the specific report with that type                                       |
+| `GET`    | `/report/:reportType/:id`                | Gets the specific report with that type                                       |
+| `POST`   | `/report/:reportType/`                   | Creates the specified report, with that report type                           |
+| `PUT`    | `/report/:reportType/:id`                | Changes attributes of report with that type and id                            |
+| `DELETE` | `/report/:reportType/:id`                | Deletes report with that type and specified id                                |
+
+Note: For simplicity this app just uses a simple array of reports, not database.
+
+Our reports are in the following format:
+```javascript
+report: {
+    id: string;
+    source: string;
+    amount: number;
+    created_at: Date;
+    updated_at: Date;
+    type: ReportType;
+}[];
+```
+
+And the default data for reports, contains:
+```javascript
+data: [
+    {
+        id: "2d256586-6931-4f67-a63f-16207acef5cc",
+        source: 'Salary',
+        amount: 7500,
+        created_at: new Date(),
+        updated_at: new Date(),
+        type: ReportType.INCOME,
+    },
+    {
+        id: "56e62afa-2250-49d4-8b74-ae0fd1ac83d6",
+        source: 'Udemy',
+        amount: 15000,
+        created_at: new Date(),
+        updated_at: new Date(),
+        type: ReportType.INCOME,
+    },
+    {
+        id: "8a188757-1d6e-4730-86bf-c9e2dd484680",
+        source: 'Food',
+        amount: 7500,
+        created_at: new Date(),
+        updated_at: new Date(),
+        type: ReportType.EXPENSE,
+    },
+    {
+        id: "04f80873-0b67-49ad-82f1-2b03d8d9cbfe",
+        source: 'Clothes',
+        amount: 7500,
+        created_at: new Date(),
+        updated_at: new Date(),
+        type: ReportType.EXPENSE,
+    },
+]
+```
+
+There is also a summary path:
+| Method   | URL                                      | Description                                                                   |
+| -------- | ---------------------------------------- | ----------------------------------------------------------------------------- |
+| `GET`    | `/summary`                               | Returns summary based on all reports, and thier types                         |
+
+The response of the above api is as follows:
+```javascript
+{
+    totalIncome,
+    totalExpense,
+    netIncome: totalIncome - totalExpense,
+}
+```
+`totalIncome` is the total of amount of each income. The `totalExpense` is also the same for expenses.
+
+## Realtor App
+This is an app that simulates a realtor, it uses the nest interceptors and guards and implements authorization and authentication.
